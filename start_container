@@ -1,0 +1,7 @@
+#!/bin/sh
+# This is a SAMPLE. You may need to change the host volume and/or the port.
+# Remember to add your config file and build before running. 
+#
+# /mnt/bacula represents the host's directory for the volume to be mounted. 
+#
+docker run -p 9103:9103 -v /mnt/bacula:/opt/data -d bacula
