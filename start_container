@@ -4,4 +4,4 @@
 #
 # /mnt/bacula represents the host's directory for the volume to be mounted. 
 #
-docker run -p 9103:9103 -v /mnt/bacula:/opt/data -d bacula
+docker run -p 9103:9103 -v /opt/docker.data/bacula:/opt/data --name=bacula-sd -d bacula72 

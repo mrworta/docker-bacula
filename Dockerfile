@@ -24,7 +24,7 @@ RUN yum install -y gcc gcc-cpp git make gcc-c++ zlib-devel openssl-devel bc sqli
 RUN cd /usr/src && git clone http://git.bacula.org/bacula
 #
 # *** If you need another Bacula-Release, just edit the tag:
-RUN cd /usr/src/bacula && git checkout tags/Release-7.0.5
+RUN cd /usr/src/bacula && git checkout tags/Release-7.2.0
 #
 #
 # Configure and compile sd
@@ -36,6 +36,9 @@ COPY data/bacula-sd.conf /opt/bacula.current/etc/
 VOLUME /opt/data
 
 # Do the work thing
-CMD /opt/bacula.current/etc/bacula-ctl-sd start; tail -F /var/log/messages
+#CMD /opt/bacula.current/etc/bacula-ctl-sd start; tail -F /var/log/messages
+
+ENTRYPOINT ["/opt/bacula.current/sbin/bacula-sd", "-f", "-c","/opt/bacula.current/etc/bacula-sd.conf"]
+
 
 EXPOSE 9103
